@@ -16,18 +16,22 @@
 class SnakeUser : public Snake {
 private:
 
-    QBrush _head= QBrush(Qt::red, Qt::Dense7Pattern);
+    QBrush _head= QBrush(Qt::red, Qt::SolidPattern);
     QBrush _body= QBrush(Qt::black, Qt::Dense7Pattern);
 public:
-    SnakeUser(QObject& context,QPoint begin, Direction start): Snake(context,begin,start,_head,_body)
+    SnakeUser(QObject* context,QPoint begin, Direction start): Snake(context,begin,start,&_head,&_body)
                                                                   {
+        setListen();
     }
-SnakeUser(QObject &context): Snake(context,QPoint(0,0),Direction::rigth,_head,_body) {}
+    explicit SnakeUser(QObject* context): Snake(context,*new QPoint(0,0),Direction::rigth,&_head,&_body) {
+        setListen();
+    }
+//SnakeUser(QObject* context):Sn{}
 
 
     void setListen() override {
-        auto filter = new FilterKeys(&_context, dynamic_cast<Snake*>(this));
-        _context.installEventFilter(filter);
+        auto filter = new FilterKeys(_context, dynamic_cast<Snake*>(this));
+        (*_context).installEventFilter(filter);
     }
 
     class FilterKeys : public QObject {

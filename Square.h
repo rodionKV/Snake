@@ -7,6 +7,7 @@
 
 #include "ObjectView.h"
 #include "Point.h"
+#include <QRect>
 
 class Square : public ObjectView {
 private:
@@ -30,10 +31,12 @@ public:
         result.push_back(*new Point(_down.getX(),_down.getY()+size_edge));
         return result;
     }
-
+  operator QRect(){
+      return QRect(_down,_up);
+    }
     void painObject(QPainter &qPainter) override {
         if (qPainter.isActive()) {
-            int size_edge = _down.getX() - _up.getX();
+            int size_edge =   _up.getX()-_down.getX();
             qPainter.drawRect(_down.getX(),_down.getY(),size_edge,size_edge);
         }
     }

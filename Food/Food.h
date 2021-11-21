@@ -10,15 +10,19 @@
 #include "../Square.h"
 
 class Food : public ObjectView {
-private:
+public:
     Square &_field;
-    std::string _path_picture;
+    QString& _path_picture;
 
-    Food(Square &field, std::string &path_picture) : _field(field), _path_picture(path_picture) {
+    Food(Square &field, QString &path_picture) : _field(field), _path_picture(path_picture) {
 
     }
 
-    void painObject(QPainter &) override ;
+    void painObject(QPainter & qPainter) override {
+        if( qPainter.isActive()){
+                qPainter.drawPixmap((QRect)_field,QPixmap(_path_picture));
+        }
+    }
 
 // void createObject() override{
 //
@@ -30,7 +34,7 @@ private:
         return _field;
     }
 
-    std::string getPathPicture() {
+   QString getPathPicture() {
         return _path_picture;
     }
 };

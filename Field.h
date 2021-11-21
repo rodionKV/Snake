@@ -16,7 +16,7 @@ private:
     int _num_x, _num_y;
     std::vector<std::vector<Square>> field;
 public:
-    Field(int num_x, int num_y, int size_edge) {
+    Field(int num_x, int num_y, int size_edge):_num_x(num_x),_num_y(num_y) {
         field.resize(num_y);
         for (int i = 0; i < num_y; ++i) {
             for (int j = 0; j < num_x; ++j) {
@@ -25,11 +25,11 @@ public:
 
         }
     }
-
+Field(){};
     void painObject(QPainter &qPainter) override {
         if (qPainter.isActive()) {
-            for (int i = 0; i < _num_x; ++i) {
-                for (int j = 0; j < _num_y; ++j) {
+            for (int i = 0; i < _num_x; i++) {
+                for (int j = 0; j < _num_y; j++) {
                     switch ((i + j) % 2) {
                         case 1:
                             qPainter.setBrush(QBrush(Qt::black, Qt::Dense7Pattern));

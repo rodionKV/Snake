@@ -6,11 +6,10 @@
 #define SNAKE_APPLE_H
 #include "Food.h"
 #include <iostream>
+#include <QString>
 class Apple:public Food{
 public:
-    std::string path_pic=" ";
-    Apple(Square field): Food(field,path_pic){}
-
-
+    QString path_pic=R"(C:\Users\rodion\Documents\Ubuntu_servel_file\snake\images\apple.png)";
+    explicit Apple( Square& field): Food(field,path_pic){}
 };
 #endif //SNAKE_APPLE_H
