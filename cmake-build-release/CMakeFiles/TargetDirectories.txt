@@ -1,0 +1,4 @@
+C:/Users/rodion/Documents/Ubuntu_servel_file/snake/cmake-build-release/CMakeFiles/snake.dir
+C:/Users/rodion/Documents/Ubuntu_servel_file/snake/cmake-build-release/CMakeFiles/edit_cache.dir
+C:/Users/rodion/Documents/Ubuntu_servel_file/snake/cmake-build-release/CMakeFiles/rebuild_cache.dir
+C:/Users/rodion/Documents/Ubuntu_servel_file/snake/cmake-build-release/CMakeFiles/snake_autogen.dir
