@@ -15,7 +15,6 @@ public:
 operator QPoint(){
     return QPoint(_x,_y);
     }
-
     int& getX(){
         return _x;
     }

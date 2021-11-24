@@ -5,32 +5,24 @@
 #ifndef SNAKE_FOOD_H
 #define SNAKE_FOOD_H
 
-#include <QPainter>
-#include "../ObjectView.h"
 #include "../Square.h"
 
 class Food : public ObjectView {
 public:
-    Square &_field;
+    QPoint _field;
+    int _size_of_edge;
     QString& _path_picture;
 
-    Food(Square &field, QString &path_picture) : _field(field), _path_picture(path_picture) {
-
+    Food(QPoint& field,int size_of_edge, QString &path_picture) : _field(field), _path_picture(path_picture),_size_of_edge(size_of_edge) {
     }
 
     void painObject(QPainter & qPainter) override {
         if( qPainter.isActive()){
-                qPainter.drawPixmap((QRect)_field,QPixmap(_path_picture));
+                qPainter.drawPixmap((QRect)(Square(_field,_size_of_edge)),QPixmap(_path_picture));
         }
     }
 
-// void createObject() override{
-//
-// };
-// void erasureObject() override{
-//
-// };
-    Square& getField() {
+    QPoint& getField() {
         return _field;
     }
 

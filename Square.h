@@ -8,6 +8,7 @@
 #include "ObjectView.h"
 #include "Point.h"
 #include <QRect>
+#include <QPainter>
 
 class Square : public ObjectView {
 private:
@@ -21,7 +22,15 @@ public:
     Square(Point down, int size_edge) : _down(down), _up(Point(down.getX() + size_edge, down.getY() + size_edge)) {}
 
     Square(int x_down, int y_down, int x_up, int y_up) : _down(Point(x_down, y_down)), _up(Point(x_up, y_up)) {}
+    Square(Square& square): _down(square.get_down_point()), _up(square.get_up_point()){
 
+    }
+    Point get_down_point(){
+        return _down;
+    }
+    Point get_up_point(){
+        return _up;
+    }
     std::vector<Point> get_all_points() {
         int size_edge = _down.getX() - _up.getX();
         std::vector<Point> result;

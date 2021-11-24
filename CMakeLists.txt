@@ -12,14 +12,12 @@ find_package(Qt5 COMPONENTS
         Core
         Gui
         Widgets
+        Multimedia
         REQUIRED)
 
-add_executable(snake main.cpp Square.h Food/Food.h Snake.h ObjectView.h Food/Apple.h Point.h Field.h SnakeUser.h Game.h)
-target_link_libraries(snake
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
-        )
+
+add_executable(snake main.cpp Square.h Food/Food.h Snake.h ObjectView.h Food/Apple.h Point.h Field.h SnakeUser.h GameViewUsual.h Food/Peach.h GameView.h CriticalFailEvent.h)
+target_link_libraries(snake Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Multimedia )
 
 if (WIN32)
     set(DEBUG_SUFFIX)

@@ -7,7 +7,6 @@
 class ObjectView{
 
     virtual void painObject(QPainter&)=0;
-
 //    virtual void createObject()=0;
 //    virtual void erasureObject()=0;
 

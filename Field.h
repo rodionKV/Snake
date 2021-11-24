@@ -13,23 +13,22 @@
 
 class Field : public ObjectView {
 private:
-    int _num_x, _num_y;
+    int _num_e;
     std::vector<std::vector<Square>> field;
 public:
-    Field(int num_x, int num_y, int size_edge):_num_x(num_x),_num_y(num_y) {
-        field.resize(num_y);
-        for (int i = 0; i < num_y; ++i) {
-            for (int j = 0; j < num_x; ++j) {
-                field[i].push_back(*(new Square(QPoint(j,i),size_edge)));
+    Field(int num_e,int size_edge):_num_e(num_e) {
+        field.resize(num_e);
+        for (int i = 0; i < num_e; ++i) {
+            for (int j = 0; j < num_e; ++j) {
+                field[i].emplace_back(QPoint(j,i),size_edge);
             }
 
         }
     }
-Field(){};
     void painObject(QPainter &qPainter) override {
         if (qPainter.isActive()) {
-            for (int i = 0; i < _num_x; i++) {
-                for (int j = 0; j < _num_y; j++) {
+            for (int i = 0; i < _num_e; i++) {
+                for (int j = 0; j < _num_e; j++) {
                     switch ((i + j) % 2) {
                         case 1:
                             qPainter.setBrush(QBrush(Qt::black, Qt::Dense7Pattern));
